@@ -1,0 +1,21 @@
+{
+  "name": "todo-graphql-server",
+  "version": "1.0.0",
+  "description": "Express server for graphQL",
+  "main": "server.js",
+  "author": "Shyam Gupta",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "GraphQL"
+  ],
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.13.3",
+    "express-graphql": "^0.4.4",
+    "graphql": "^0.4.12",
+    "nodemon": "^1.17.5"
+  }
+}
