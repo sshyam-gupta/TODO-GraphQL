@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo';
-import { TOGGLE_ALL_TODO_STATUS, CLEAR_COMPLETED } from '../graphQL/mutation';
-import { GET_TODOS } from '../graphQL/query';
-import Warning from './Warning';
+import { TOGGLE_ALL_TODO_STATUS, CLEAR_COMPLETED } from '../../graphQL/mutation';
+import { GET_TODOS } from '../../graphQL/query';
+import Warning from '../Warning';
 
 class Actions extends Component {
 	clearCompleted = (clearCompleted) => {

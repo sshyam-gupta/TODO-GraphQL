@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 import { Mutation } from 'react-apollo';
-import { ADD_TODO } from '../graphQL/mutation';
-import { GET_TODOS } from '../graphQL/query';
+import { ADD_TODO } from '../../graphQL/mutation';
+import { GET_TODOS } from '../../graphQL/query';
 
 class AddTodo extends Component {
 	todo;

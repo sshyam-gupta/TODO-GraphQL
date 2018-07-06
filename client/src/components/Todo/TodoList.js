@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Query } from 'react-apollo';
 
-import { GET_TODOS } from '../graphQL/query';
+import { GET_TODOS } from '../../graphQL/query';
 import Todo from './Todo';
 
 class TodoList extends Component {

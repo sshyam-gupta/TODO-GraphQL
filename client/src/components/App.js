@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import TodoList from './TodoList';
+import { TodoList, AddTodo } from './Todo';
 import Header from './Header';
-import AddTodo from './AddTodo';
 import '../App.css';
 import Actions from './Actions';
 

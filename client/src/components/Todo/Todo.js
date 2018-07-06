@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo';
-import { TOGGLE_TODO_STATUS, DELETE_TASK } from '../graphQL/mutation';
-import { GET_TODOS } from '../graphQL/query';
-import Warning from './Warning';
+import { TOGGLE_TODO_STATUS, DELETE_TASK } from '../../graphQL/mutation';
+import { GET_TODOS } from '../../graphQL/query';
+import Warning from '../Warning';
 
 class Todo extends Component {
 	deleteTask = (deleteTask, todo) => {
@@ -22,7 +22,6 @@ class Todo extends Component {
 						mutation={DELETE_TASK}
 						variables={{ id: todo.id }}
 						update={(cache, { data: { destroy } }) => {
-
 							try {
 								cache.writeQuery({
 									query: GET_TODOS,
