@@ -2,13 +2,11 @@ import gql from 'graphql-tag';
 import { TODO } from '../fragment';
 
 const GET_TODOS = gql`
-	{
+  {
     todos {
-			...Todo
+      ...Todo
     }
   }
-	${TODO}
-`
-export {
-	GET_TODOS
-}
+  ${TODO}
+`;
+export { GET_TODOS };

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 
 import ErrorBoundary from './components/ErrorBoundary';
 import App from './components/App';
@@ -11,22 +11,21 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
 const client = new ApolloClient({
-	uri: "http://localhost:8080/",
-	opts: {
-		mode: 'no-cors',
-	},
+  uri: 'http://localhost:8080/',
+  opts: {
+    mode: 'no-cors',
+  },
 });
 
 const MainApp = () => (
-	<BrowserRouter>
-		<ApolloProvider client={client}>
-			<ErrorBoundary>
-				<App />
-			</ErrorBoundary>
-		</ApolloProvider>
-	</BrowserRouter>
-
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </ApolloProvider>
+  </BrowserRouter>
 );
 
-ReactDOM.render(<MainApp/>, document.getElementById('root'));
+ReactDOM.render(<MainApp />, document.getElementById('root'));
 registerServiceWorker();

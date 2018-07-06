@@ -1,13 +1,11 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 const TODO = gql`
-	fragment Todo on todo {
-		id
-		title
-		completed
-	}
-`
+  fragment Todo on todo {
+    id
+    title
+    completed
+  }
+`;
 
-export {
-	TODO
-}
+export { TODO };
