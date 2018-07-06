@@ -46,10 +46,20 @@ const DELETE_TASK = gql`
   ${TODO}
 `;
 
+const EDIT_TASK = gql`
+  mutation EditTask($id: ID!, $title: String!) {
+    save(id: $id, title: $title) {
+      ...Todo
+    }
+  }
+  ${TODO}
+`;
+
 export {
   TOGGLE_TODO_STATUS,
   ADD_TODO,
   TOGGLE_ALL_TODO_STATUS,
   CLEAR_COMPLETED,
   DELETE_TASK,
+  EDIT_TASK,
 };
