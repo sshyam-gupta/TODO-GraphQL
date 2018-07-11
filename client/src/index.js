@@ -11,7 +11,7 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8080/',
+  uri: 'https://react-graphql-express.herokuapp.com/',
   opts: {
     mode: 'no-cors',
   },

@@ -5,6 +5,7 @@
   "main": "server.js",
   "author": "Shyam Gupta",
   "license": "MIT",
+  "homepage": "https://react-graphql-express.herokuapp.com/",
   "scripts": {
     "start": "nodemon server.js"
   },

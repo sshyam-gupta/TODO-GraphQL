@@ -1,4 +1,3 @@
-
 # TODO app with React & GraphQL Server
 
 ## Requirements
@@ -21,3 +20,9 @@ You will need [Node.js](https://nodejs.org/en/download/) and [yarn](https://yarn
     $ cd server && yarn start
 
 ---
+
+### Demo
+
+[Client](https://react-todo-graphql.surge.sh)
+
+[Server](https://react-graphql-express.herokuapp.com/)
