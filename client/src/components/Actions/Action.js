@@ -33,24 +33,24 @@ class Actions extends Component {
           mutation={TOGGLE_ALL_TODO_STATUS}
           variables={{ checked: true }}
         >
-          {toggleStatus => (
+          {(toggleStatus, { loading }) => (
             <div
-              className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f6 dib mr1"
+              className={`b ph3 pv2 input-reset ba b--black bg-transparent pointer f6 dib mr1`}
               onClick={toggleStatus}
             >
-              Mark All Completed
+              {loading ? 'Completing please wait...' : 'Mark All Completed'}
             </div>
           )}
         </Mutation>
         <Mutation mutation={CLEAR_COMPLETED} update={this.updateCache}>
-          {clearCompleted => (
+          {(clearCompleted, { loading }) => (
             <div
               className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f6 dib"
               onClick={() => {
                 this.clearCompleted(clearCompleted);
               }}
             >
-              Clear Completed
+              {loading ? 'Clearing please wait...' : 'Clear Completed'}
             </div>
           )}
         </Mutation>

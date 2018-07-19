@@ -26,7 +26,7 @@ class AddTodo extends Component {
           }
         }}
       >
-        {addTodo => (
+        {(addTodo, { loading, error }) => (
           <form
             className="black-80"
             onSubmit={e => {
@@ -53,9 +53,11 @@ class AddTodo extends Component {
             <button
               className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
               type="submit"
+              disabled={loading}
             >
-              Add Todo
+              {loading ? 'Adding ... ' : 'Add Todo'}
             </button>
+            {error && <p>Error :( Please try again</p>}
           </form>
         )}
       </Mutation>

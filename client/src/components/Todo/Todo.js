@@ -22,10 +22,10 @@ class Todo extends Component {
   };
 
   editTask = (editTask, todo) => {
+    editTask();
     this.setState({
       isEditing: false,
     });
-    editTask();
   };
 
   updateCache = (cache, { data: { destroy } }) => {
@@ -47,20 +47,25 @@ class Todo extends Component {
         {!this.state.isEditing ? (
           <div className="flex items-center mb2">
             <Mutation mutation={TOGGLE_TODO_STATUS} variables={{ id: todo.id }}>
-              {toggleStatus => (
-                <React.Fragment>
-                  <input
-                    id={todo.id}
-                    className="mr2"
-                    onChange={toggleStatus}
-                    type="checkbox"
-                    checked={todo.completed}
-                  />
-                  <label htmlFor={todo.id} className="lh-copy">
-                    {todo.title}
-                  </label>
-                </React.Fragment>
-              )}
+              {(toggleStatus, { loading }) => {
+                if (loading) {
+                  return <div>Working on it...</div>;
+                }
+                return (
+                  <React.Fragment>
+                    <input
+                      id={todo.id}
+                      className="mr2"
+                      onChange={toggleStatus}
+                      type="checkbox"
+                      checked={todo.completed}
+                    />
+                    <label htmlFor={todo.id} className="lh-copy">
+                      {todo.title}
+                    </label>
+                  </React.Fragment>
+                );
+              }}
             </Mutation>
             <div style={{ marginLeft: 'auto' }}>
               <span className={todo.completed ? 'green tr' : 'gold tr'}>
@@ -81,16 +86,18 @@ class Todo extends Component {
                 variables={{ id: todo.id }}
                 update={this.updateCache}
               >
-                {deleteStatus => (
-                  <span
-                    className="bg-red white pa2 ml2 pointer"
-                    onClick={() => {
-                      this.deleteTask(deleteStatus, todo);
-                    }}
-                  >
-                    Delete
-                  </span>
-                )}
+                {(deleteStatus, { loading }) => {
+                  return (
+                    <span
+                      className="bg-red white pa2 ml2 pointer"
+                      onClick={() => {
+                        this.deleteTask(deleteStatus, todo);
+                      }}
+                    >
+                      {loading ? 'Deleting ...' : 'Delete'}
+                    </span>
+                  );
+                }}
               </Mutation>
             </div>
           </div>
@@ -99,34 +106,39 @@ class Todo extends Component {
             mutation={EDIT_TASK}
             variables={{ id: todo.id, title: this.state.title || todo.title }}
           >
-            {editTask => (
-              <div className="flex items-center mb2">
-                <input
-                  id="todo"
-                  className="input-reset ba b--black-20 pa2 mb2 db w-100"
-                  type="text"
-                  aria-describedby="Enter Todo"
-                  placeholder="Enter Todo"
-                  value={this.state.title || todo.title}
-                  ref={node => {
-                    this.todo = node;
-                  }}
-                  onChange={e => {
-                    this.setState({
-                      title: e.target.value,
-                    });
-                  }}
-                  onBlur={() => {
-                    this.editTask(editTask, todo);
-                  }}
-                  onKeyPress={e => {
-                    if (e.key === 'Enter') {
+            {(editTask, { loading }) => {
+              if (loading) {
+                return <div>Baking your changes ...</div>;
+              }
+              return (
+                <div className="flex items-center mb2">
+                  <input
+                    id="todo"
+                    className="input-reset ba b--black-20 pa2 mb2 db w-100"
+                    type="text"
+                    aria-describedby="Enter Todo"
+                    placeholder="Enter Todo"
+                    value={this.state.title || todo.title}
+                    ref={node => {
+                      this.todo = node;
+                    }}
+                    onChange={e => {
+                      this.setState({
+                        title: e.target.value,
+                      });
+                    }}
+                    onBlur={() => {
                       this.editTask(editTask, todo);
-                    }
-                  }}
-                />
-              </div>
-            )}
+                    }}
+                    onKeyPress={e => {
+                      if (e.key === 'Enter') {
+                        this.editTask(editTask, todo);
+                      }
+                    }}
+                  />
+                </div>
+              );
+            }}
           </Mutation>
         )}
       </div>
