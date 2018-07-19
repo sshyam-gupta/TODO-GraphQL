@@ -2,6 +2,7 @@
   "name": "todo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://react-todo-graphql.surge.sh",
   "dependencies": {
     "apollo-boost": "^0.1.10",
     "apollo-client-preset": "^1.0.8",
