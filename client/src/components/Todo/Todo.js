@@ -49,7 +49,7 @@ class Todo extends Component {
             <Mutation mutation={TOGGLE_TODO_STATUS} variables={{ id: todo.id }}>
               {(toggleStatus, { loading }) => {
                 if (loading) {
-                  return <div>Working on it...</div>;
+                  return <div>Baking your action...</div>;
                 }
                 return (
                   <React.Fragment>
